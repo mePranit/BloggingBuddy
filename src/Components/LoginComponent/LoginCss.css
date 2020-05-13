@@ -6,6 +6,9 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
   }
+  body{
+    background-color:#333941;
+  }
   
   /* Set a style for all buttons */
   button {
@@ -41,7 +44,7 @@ input[type=text], input[type=password] {
   }
   
   .container {
-    padding: 16px;
+    padding:  16px;
   }
   
   span.psw {

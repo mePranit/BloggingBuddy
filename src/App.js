@@ -16,7 +16,7 @@ import './Style/heroic-features.css';
 import LoginComponent from './Components/LoginComponent/LoginComponent';
 import FooterComponent from './Components/FooterComponent/FooterComponent';
 import HeaderComponent from './Components/HeaderComponent/HeaderComponent';
-import BodyComponent from './Components/BodyComponent/BodyComponent';
+import SignupComponent from './Components/SignupComponent/SignupComponent';
 
 
 import {BrowserRouter} from 'react-router-dom';
@@ -30,14 +30,15 @@ function App() {
   return (
     <BrowserRouter>
     
-    <Router>
-      <HeaderComponent/>
-      <LoginComponent/>
-      <br/>         
-          {/* <Route path="/" component={LoginSignupComponent}/>         */}
-      <br/>
-      <FooterComponent/>
-    </Router>
+      <Router>
+          <HeaderComponent/>
+            <br/>         
+              <Route path="/"exact component={LoginComponent}/>
+              <Route path="/login" component={LoginComponent}/>
+              <Route path="/signup" component={SignupComponent}/>        
+            <br/>
+          <FooterComponent/>
+      </Router>
     </BrowserRouter>
   );
 }
