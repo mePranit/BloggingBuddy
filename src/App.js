@@ -2,25 +2,43 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+//  import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+//  import '../node_modules/bootstrap/dist/css/modern-business.css';
+//  import '../node_modules/bootstrap/dist/css/heroic-features.css';
+//  import '../node_modules/jquery/dist/jquery.min.js';
+ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+ 
+
+import './Style/bootstrap.min.css';
+import './Style/modern-business.css';
+import './Style/heroic-features.css';
+
+import LoginComponent from './Components/LoginComponent/LoginComponent';
+import FooterComponent from './Components/FooterComponent/FooterComponent';
+import HeaderComponent from './Components/HeaderComponent/HeaderComponent';
+import BodyComponent from './Components/BodyComponent/BodyComponent';
+
+
+import {BrowserRouter} from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from "react-router-dom";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    
+    <Router>
+      <HeaderComponent/>
+      <LoginComponent/>
+      <br/>         
+          {/* <Route path="/" component={LoginSignupComponent}/>         */}
+      <br/>
+      <FooterComponent/>
+    </Router>
+    </BrowserRouter>
   );
 }
-
 export default App;
