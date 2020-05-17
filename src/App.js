@@ -5,7 +5,7 @@ import './App.css';
 //  import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //  import '../node_modules/bootstrap/dist/css/modern-business.css';
 //  import '../node_modules/bootstrap/dist/css/heroic-features.css';
-//  import '../node_modules/jquery/dist/jquery.min.js';
+ import '../node_modules/jquery/dist/jquery.min.js';
  import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
  
 
@@ -17,7 +17,11 @@ import LoginComponent from './Components/LoginComponent/LoginComponent';
 import FooterComponent from './Components/FooterComponent/FooterComponent';
 import HeaderComponent from './Components/HeaderComponent/HeaderComponent';
 import SignupComponent from './Components/SignupComponent/SignupComponent';
-
+import ProfileComponent from './Components/ProfileComponent/ProfileComponent';
+import AboutComponent from './Components/AboutComponent/AboutComponent';
+import DashboardComponent from './Components/DashboardComponent/DashboardComponent';
+import RecommendedComponent from './Components/RecommendedComponent/RecommendedComponent';
+import NotificationComponent from './Components/NotificationComponent/NotificationComponent';
 
 import {BrowserRouter} from 'react-router-dom';
 import {
@@ -25,6 +29,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 
 function App() {
   return (
@@ -35,7 +40,12 @@ function App() {
             <br/>         
               <Route path="/"exact component={LoginComponent}/>
               <Route path="/login" component={LoginComponent}/>
-              <Route path="/signup" component={SignupComponent}/>        
+              <Route path="/signup" component={SignupComponent}/>
+              <Route path="/profile" component={ProfileComponent}/> 
+              <Route path="/about" component={AboutComponent}/>    
+              <Route path="/dashboard" component={DashboardComponent}/> 
+              <Route path="/recommended" component={RecommendedComponent}/>    
+              <Route path="/notification" component={NotificationComponent}/>        
             <br/>
           <FooterComponent/>
       </Router>

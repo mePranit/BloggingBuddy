@@ -23,43 +23,26 @@ export default class HeaderComponent extends React.Component{
                        <Link to="/dashboard" className="nav-link">Dashboard</Link>
                     </li>
                     <li class="nav-item">
+                     <Link to="/recommended" className="nav-link">Recommended</Link>
+                    </li>
+                    <li class="nav-item">
+                     <Link to="/notification" className="nav-link">Notification</Link>
+                    </li>
+                    <li class="nav-item">
+                     <Link to="/categories" className="nav-link">Categories</Link>
+                    </li>
+                    <li class="nav-item">       
                      <Link to="/about" className="nav-link">About</Link>
                     </li>
-
-
-
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         Notifications
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <Link to="/viewshow" className="dropdown-item">All Show lists</Link>
-                        <Link to="/myshow" className="dropdown-item">My Show lists</Link>
-                        <Link to="/bookedshow" className="dropdown-item">Booked Show lists</Link>
-                      </div>
-                    </li>
-
-
-
-
                     
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Recommended
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <Link to="/addshow" className="dropdown-item">Add Show</Link>
-                        <Link to="/viewshow" className="dropdown-item">Book Show</Link>
-                      </div>
-                    </li>
 
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Settings
                       </a>
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                        <Link to="/personalinformation" className="dropdown-item">Your Profile</Link>
-                        <Link className="dropdown-item">Logout</Link>
+                        <Link to="/profile" className="dropdown-item">Your Profile</Link>
+                        <Link to= "/login" className="dropdown-item">Logout</Link>
                       </div>
                     </li>
                   

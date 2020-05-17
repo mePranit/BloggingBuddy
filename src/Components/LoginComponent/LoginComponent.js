@@ -19,8 +19,8 @@ class LoginComponent extends React.Component {
             
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <img class="img-fluid rounded" src={require('../Photos/blogggingbuddyLogo.jpg')} alt="" />
+                    <div class="col-lg-6" style={{ paddingTop: "25px" }}>
+                        <img class="img-fluid rounded" src={require('../Photos/blogggingbuddyLogo_circular.png')} alt="" />
                     </div>
                     <div class="col-lg-6">
 
