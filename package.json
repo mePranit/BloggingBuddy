@@ -16,9 +16,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-floating-action-button": "^1.0.5",
+    "react-popupbox": "^2.0.8",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "reactjs-popup": "^1.5.0",
     "route": "^0.2.5"
   },
   "scripts": {
