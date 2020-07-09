@@ -50,9 +50,9 @@ class DashboardComponent extends React.Component {
 
     openPopupbox() {
         const content = (
-            <div class="container" style={{ backgroundColor: "#F5F8FD" }}>
+            <div class="container" style={{ backgroundColor: "#FCF9F9" }}>
 
-                <form >
+                <form style={{ padding: "20px" }} >
                     {/* <p><b>Post new blog</b></p> */}
                     <label for="username"><b>Category</b></label>
                     <input type="text" placeholder="Enter Category" name="username" required />

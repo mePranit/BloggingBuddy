@@ -8,10 +8,77 @@ import background from '../Photos/background.png'
 
 
 class SignupComponent extends React.Component {
-    constructor(props) {
+    constructor (props){
         super(props);
+        this.onchangedUsername=this.onchangedUsername.bind(this);
+        this.onchangedGmail=this.onchangedGmail.bind(this);
+        this.onchangedPassword=this.onchangedPassword.bind(this);
+        this.onchangedReenteredpassword=this.onchangedReenteredpassword.bind(this);
+        this.onSubmit=this.onSubmit.bind(this);
+
+
+        
+        this.state={
+            username: '',
+            gmail: '',
+            password: '',
+            reenteredpassword: ''
+        }
+    }
+    onchangedUsername(e)
+    {
+        this.setState({
+            username:e.target.value
+        });
     }
 
+    onchangedGmail(e)
+    {
+        this.setState({
+            gmail:e.target.value
+        });
+    }
+
+    onchangedPassword(e)
+    {
+        this.setState({
+            password:e.target.value
+        });
+    }
+
+    onchangedReenteredpassword(e)
+    {
+        this.setState({
+            reenteredpassword:e.target.value
+        });
+    }
+    onSubmit(e)
+    {
+        //alert(this.state.gmail);
+        e.preventDefault();
+        if(this.state.password===this.state.reenteredpassword)
+        {
+            const user={
+            
+                gmail:this.state.gmail,
+                username:this.state.username,
+                password:this.state.password           
+            }
+                console.log(user);
+                axios.post('http://localhost:5200/registeruser',user)
+                .then(res => console.log(res.data));
+                alert("user created sucessfully");
+                this.props.history.push('/login')
+        }
+        else
+        {
+            alert("Password didnot matched");
+           
+        }
+       
+            
+        
+    }
 
 
     render() {
@@ -47,19 +114,19 @@ class SignupComponent extends React.Component {
                                 <header class="jumbotron my-4">
 
                                     <div class="container">
-                                        <form>
+                                        <form   onSubmit={this.onSubmit}>
                                             <label for="username"><b>Username</b></label>
-                                            <input type="text" placeholder="Enter Username" name="username" required />
+                                            <input type="text" placeholder="Enter Username" name="username"value={this.state.username} onChange={this.onchangedUsername} required />
 
 
                                             <label for="gmail"><b>Gmail</b></label>
-                                            <input type="text" placeholder="Enter Gmail" name="gmail" required />
+                                            <input type="text" placeholder="Enter Gmail" name="gmail" value={this.state.gmail} onChange={this.onchangedGmail}  required />
 
                                             <label for="password"><b>Password</b></label>
-                                            <input type="password" placeholder="Enter Password" name="password" required />
+                                            <input type="password" placeholder="Enter Password" name="password"value={this.state.password} onChange={this.onchangedPassword} required />
 
                                             <label for="reenteredpassword"><b>Re-Enter Password</b></label>
-                                            <input type="password" placeholder="Re-Enter Password" name="reenteredpassword" required />
+                                            <input type="password" placeholder="Re-Enter Password" name="reenteredpassword"value={this.state.reenteredpassword} onChange={this.onchangedReenteredpassword} required />
 
                                             <button type="submit" value="signup">Signup</button>
                                             <Link to="/login" className="nav-link">Already have an account?</Link>
