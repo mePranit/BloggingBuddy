@@ -11,9 +11,77 @@ import background from '../Photos/background.png'
 
 
 class LoginComponent extends React.Component {
+    constructor (props){
+        super(props);
+        this.onchangedUsername=this.onchangedUsername.bind(this);
+        this.onchangedPassword=this.onchangedPassword.bind(this);
+        this.onLogin=this.onLogin.bind(this);
 
 
+        
+        this.state={
+            username: '',
+            password: ''
+            
+        }
+    }
 
+        onchangedUsername(e)
+        {
+            this.setState({
+                username:e.target.value
+            });
+        }
+        onchangedPassword(e)
+        {
+            this.setState({
+                password:e.target.value
+            });
+        }
+        onLogin(e)
+            {
+                alert('login clicked');
+                e.preventDefault();
+
+                const user={
+                    username:this.state.username,
+                    password:this.state.password           
+                }
+                axios.post('http://localhost:5200/login',user).then((res)=>{
+                     //console.log(res.data)
+                     if(res.data.message == 'Invalid')
+                     {
+                         alert("Incorrect Creditials");
+                         console.log(res.data)
+                     }
+                     else
+                     {
+                        
+                        localStorage.setItem('token', res.data.token);
+                        localStorage.setItem('userid', res.data._id);
+                        //localStorage.getItem('itemName')
+                        //localStorage.clear();
+                        console.log(localStorage.getItem('token'));
+                        console.log(localStorage.getItem('userid'));
+
+                        this.props.history.push('/dashboard')
+                     }
+                     
+                    //this.setState({
+                     //   mydata : res.data
+                    //})
+                    //console.log(mydata);
+                
+                })
+                /*
+                    console.log(user);
+                    axios.post('http://localhost:5000/login',user)
+                    .then(res => console.log(res.data)); 
+
+                     */
+            
+                    
+            }
     render() {
         return (
             
@@ -29,12 +97,12 @@ class LoginComponent extends React.Component {
                             <header class="jumbotron my-4" >
 
                                 <div class="container" >
-                                    <form >
+                                    <form onSubmit={this.onLogin} >
                                         <label for="uname"><b>Username</b></label>
-                                        <input type="text" placeholder="Enter Username" name="uname" required />
+                                        <input type="text" placeholder="Enter Username" name="uname"value={this.state.username} onChange={this.onchangedUsername} required />
 
                                         <label for="psw"><b>Password</b></label>
-                                        <input type="password" placeholder="Enter Password" name="psw" required />
+                                        <input type="password" placeholder="Enter Password" name="psw"value={this.state.password} onChange={this.onchangedPassword} required />
 
                                         <button type="submit">Login</button>
                                         <label>
