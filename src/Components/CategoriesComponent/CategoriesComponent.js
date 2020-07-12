@@ -7,7 +7,7 @@ import background from '../Photos/background.png'
 
 
 
-class NotificationComponent extends React.Component {
+class CategoriesComponent extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -43,4 +43,4 @@ class NotificationComponent extends React.Component {
         )
     }
 }
-export default NotificationComponent
+export default CategoriesComponent

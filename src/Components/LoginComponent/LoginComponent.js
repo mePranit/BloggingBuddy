@@ -40,7 +40,7 @@ class LoginComponent extends React.Component {
         }
         onLogin(e)
             {
-                alert('login clicked');
+               // alert('login clicked');
                 e.preventDefault();
 
                 const user={
@@ -63,6 +63,7 @@ class LoginComponent extends React.Component {
                         //localStorage.clear();
                         console.log(localStorage.getItem('token'));
                         console.log(localStorage.getItem('userid'));
+                        //console.log('userid above');
 
                         this.props.history.push('/dashboard')
                      }

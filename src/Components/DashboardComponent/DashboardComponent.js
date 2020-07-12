@@ -89,13 +89,18 @@ class DashboardComponent extends React.Component {
 
     }
 
-
-
-
-
+    componentDidMount(){
+      
+    }
+    
 
     render() {
-
+        if(!localStorage.getItem('token') && !localStorage.getItem('userid')){
+            alert("you are not logged in");
+            this.props.history.push('/login');
+           
+        }
+        
         return (
 
             <body   >

@@ -14,7 +14,10 @@ class RecommendedComponent extends React.Component {
 
 
     render() {
-
+        if(!localStorage.getItem('token') && !localStorage.getItem('userid')){
+            alert("you are not logged in");
+            this.props.history.push('/login');
+        }
         return (
             <body >
                 

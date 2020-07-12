@@ -7,6 +7,11 @@ export default class HeaderComponent extends React.Component{
   constructor (props){
     super(props);
   }
+  logout(e){
+    e.preventDefault();
+   localStorage.clear();
+   //this.props.history.push('/login')
+ }
     render(){
 
         return(
@@ -42,7 +47,7 @@ export default class HeaderComponent extends React.Component{
                       </a>
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                         <Link to="/profile" className="dropdown-item">Your Profile</Link>
-                        <Link to= "/login" className="dropdown-item">Logout</Link>
+                        <Link onClick={this.logout} className="dropdown-item">Logout</Link>
                       </div>
                     </li>
                   
