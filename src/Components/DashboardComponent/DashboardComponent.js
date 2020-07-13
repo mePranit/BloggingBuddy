@@ -13,22 +13,93 @@ import {
     PopupboxContainer
 } from 'react-popupbox';
 
-
-
 //import Popup from "reactjs-popup";
 //import Icon from '../Photos/background.png'
 // import Fab from ' @material/fab'
 // import FabButton from ' @material/fab'
 // import FabButton from ' @material/fab'
 
-
-
-
-
 class DashboardComponent extends React.Component {
-    constructor(props) {
+    constructor (props){
         super(props);
+      //  this.onCancelBook=this.onCancelBook.bind(this)
+
+        this.state = {
+            allblogs : []
+        }
+    
     }
+    // constructor (props){
+    //     super(props);
+    //     this.onchangedCategory=this.onchangedCategory.bind(this);
+    //     this.onchangedContent=this.onchangedContent.bind(this);
+    //     this.onchangedDate=this.onchangedDate.bind(this);
+    //     this.onchangedUsername=this.onchangedUsername.bind(this);
+    //     this.onchangedUserid=this.onchangedUserid.bind(this);
+
+
+        
+    //     this.state={
+    //         category:'',
+    //         content:'',
+    //         date:'',
+    //         username:'',
+    //         userid:''
+    //     }
+    // }
+
+    // onchangedCategory(e)
+    // {
+    //     this.setState({
+    //         category:e.target.value
+    //     });
+    // }
+
+    // onchangedContent(e)
+    // {
+    //     this.setState({
+    //         content:e.target.value
+    //     });
+    // }
+
+    // onchangedDate(e)
+    // {
+    //     this.setState({
+    //         date:e.target.value
+    //     });
+    // }
+
+    // onchangedUsername(e)
+    // {
+    //     this.setState({
+    //         username:e.target.value
+    //     });
+    // }
+    // onchangedUserid(e)
+    // {
+    //     this.setState({
+    //         userid:e.target.value
+    //     });
+    // }
+
+    // onSubmit(e,category,content)
+    // {
+        
+    //     e.preventDefault();
+    //     const blogdata={
+    //         category:this.state.location,
+    //         content:this.state.content,
+    //         date:this.state.date,
+    //         username:this.state.username,
+    //         userid:localStorage.getItem('userid')
+    //     }
+    //         console.log(blogdata);
+    //         axios.post('http://localhost:5200/createblog',blogdata)
+    //         .then(res => console.log(res.data));
+    //         alert('blog created sucessfully')
+    //         //alert("show for "+this.state.performer+" sucessfully added");
+    //         //this.props.history.push('/viewshow')
+    // }
 
     // updatePopupbox() {
     //     const content = (
@@ -48,152 +119,67 @@ class DashboardComponent extends React.Component {
     //     })
     //   }
 
-    openPopupbox() {
-        const content = (
-            <div class="container" style={{ backgroundColor: "#FCF9F9" }}>
+    // openPopupbox() {
+    //     const content = (
+    //         this.props.history.push('/addblog')
+    //     )
 
-                <form style={{ padding: "20px" }} >
-                    {/* <p><b>Post new blog</b></p> */}
-                    <label for="username"><b>Category</b></label>
-                    <input type="text" placeholder="Enter Category" name="username" required />
+    //     PopupboxManager.open({
+    //         content,
+    //         config: {
+    //             fadeIn: true,
 
-                    <label><b>Content</b></label>
-                    <textarea class="form-control" rows="5" cols="100">
+    //             fadeInSpeed: 500,
 
-                    </textarea>
+    //         }
+    //     })
 
-                    <div class="row">
-
-                        <div class="col-lg-4 mb-4" >
-                            <button class="btn btn-success" type="submit" value="signup">Upload</button>
-                        </div>
-                        <div class="col-lg-4 mb-4" >
-                            <button class="btn btn-danger" type="submit" value="signup">Cancel</button>
-                        </div>
-
-                    </div>
-                </form>
-
-            </div>
-        )
-
-        PopupboxManager.open({
-            content,
-            config: {
-                fadeIn: true,
-
-                fadeInSpeed: 500,
-
-            }
-        })
-
-    }
+    // }
 
     componentDidMount(){
-      
+        axios.get('http://localhost:5200/selectallblogs').then((res)=>{
+            console.log(res.data)
+            this.setState({
+                allblogs : res.data
+            })
+        })
     }
-    
-
-    render() {
+    render(){
+        
         if(!localStorage.getItem('token') && !localStorage.getItem('userid')){
             alert("you are not logged in");
             this.props.history.push('/login');
            
         }
-        
-        return (
+        const { data } =this.state.allblogs
+        return(
+                 <div class="container">
+                                    {
+                                    this.state.allblogs.map((data) => {
+                                        //console.log(data._id)
+                                        return <b>
+                                             <header class="jumbotron my-4">
+                  
 
-            <body   >
-
-
-                {/* <Popup trigger={<button> Trigger</button>} position="right center">
-                    <div>Popup content here !!</div>
-                </Popup> */}
-
-
-                <Container>
-                    <Button tooltip="Post new blog" icon="fas fa-plus" onClick={this.openPopupbox} >
-                        Add
-                    </Button>
-                </Container>
-                
-                <Container >
-                   <PopupboxContainer />
-                </Container>
-
-
-                <header class="jumbotron my-4">
-                    <form >
-                        <h3>Virat Kohli </h3>
-                        <p><b>Sports , 5 AM</b></p>
-                        <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument. </p>
-                    </form>
-                    {/* </header> */}
-
-                    {/* <header class="jumbotron my-4"> */}
-                    <form >
-                        <h3>Virat Kohli</h3>
-                        <p><b>Sports , 5 AM</b></p>
-                        <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument. </p>
-                    </form>
-                    {/* </header> */}
-
-                    {/* <header class="jumbotron my-4"> */}
-                    <form >
-                        <h3>Virat Kohli</h3>
-                        <p><b>Sports , 5 AM</b></p>
-                        <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument. </p>
-                    </form>
-                    {/* </header> */}
-
-
-                    {/* <header class="jumbotron my-4"> */}
-                    <form >
-                        <h3>Virat Kohli</h3>
-                        <p><b>Sports , 5 AM</b></p>
-                        <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument. </p>
-                    </form>
-                    {/* </header> */}
-
-
-                    {/* <header class="jumbotron my-4"> */}
-                    <form >
-                        <h3>Virat Kohli</h3>
-                        <p><b>Sports , 5 AM</b></p>
-                        <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument. </p>
-                    </form>
-                    {/* </header> */}
-
-
-                    {/* <header class="jumbotron my-4"> */}
-                    <form >
-                        <h3>Virat Kohli</h3>
-                        <p><b>Sports , 5 AM</b></p>
-                        <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument. </p>
-                    </form>
-                    {/* </header> */}
-
-
-
-                    {/* <header class="jumbotron my-4"> */}
-                    <form >
-                        <h3>Virat Kohli</h3>
-                        <p><b>Sports , 5 AM</b></p>
-                        <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument. </p>
-                    </form>
-                    {/* </header> */}
-
-
-                    {/* <header class="jumbotron my-4"> */}
-                    <form >
-                        <h3>Virat Kohli</h3>
-                        <p><b>Sports , 5 AM</b></p>
-                        <p>Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument. </p>
-                    </form>
-                </header>
-
-            </body>
+                                                            {/* <header class="jumbotron my-4"> */}
+                                                            <form >
+                                                                <h3>{data.username}</h3>
+                                                                <p><b>{data.category} ,{data.date}</b></p>
+                                                                <p>{data.content}</p>
+                                                            </form>
+                                            </header>
+                                             </b>
+                                        
+                                    })
+                                }
+                 </div>
+            
         )
     }
 }
 export default DashboardComponent
+
+
+
+
+

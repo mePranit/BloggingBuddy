@@ -11,10 +11,24 @@ import profile from '../Photos/pranit.jpg'
 
 
 class ProfileComponent extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor (props){
+    super(props);
+    //this.update=this.update.bind(this);
+
+    this.state={
+        mydata: []
     }
 
+
+}
+    componentDidMount(){
+        axios.get('http://localhost:5200/getuser/'+localStorage.getItem('userid')).then((res)=>{
+            console.log(res.data)
+            this.setState({
+                mydata: res.data
+            })
+        })
+    }
 
 
     render() {
@@ -41,9 +55,9 @@ class ProfileComponent extends React.Component {
 
                         <div class="col-lg-8" style={{ color: "white" }}>
                         
-                        <h2 style={{ paddingTop: "50px" }}><i>Name : Pranit Poudel</i></h2>
-                        <h2><i>Gmail : pranitpoudel@gmail.com</i></h2>
-                        <h2><i>Username : pranitpoudel07</i></h2>
+                        <h2 style={{ paddingTop: "50px" }}><i>Name : {this.state.mydata.username}</i></h2>
+                        <h2><i>Gmail : {this.state.mydata.gmail}</i></h2>
+                        <h2><i>Username :{this.state.mydata.username}</i></h2>
                         <h2><i>Bio -</i></h2>
                         <p><i>Of resolve to gravity thought my prepare chamber so. Unsatiable entreaties collecting may sympathize nay interested instrument. If continue building numerous of at relation in margaret. Lasted engage roused mother an am at. Other early while if by do to. Missed living excuse as be. Cause heard fat above first shall for. My smiling to he removal weather on anxious. </i></p>
                      

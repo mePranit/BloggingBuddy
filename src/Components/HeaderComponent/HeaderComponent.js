@@ -39,7 +39,9 @@ export default class HeaderComponent extends React.Component{
                     <li class="nav-item">       
                      <Link to="/about" className="nav-link">About</Link>
                     </li>
-                    
+                    <li class="nav-item">       
+                     <Link to="/addblog" className="nav-link">Create Blog</Link>
+                    </li>
 
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -23,6 +23,7 @@ import DashboardComponent from './Components/DashboardComponent/DashboardCompone
 import RecommendedComponent from './Components/RecommendedComponent/RecommendedComponent';
 import NotificationComponent from './Components/NotificationComponent/NotificationComponent';
 import CategoriesComponent from './Components/CategoriesComponent/CategoriesComponent';
+import AddBlogComponent from './Components/AddBlogComponent/AddBlogComponent';
 
 import {BrowserRouter} from 'react-router-dom';
 import {
@@ -47,7 +48,9 @@ function App() {
               <Route path="/dashboard" component={DashboardComponent}/> 
               <Route path="/recommended" component={RecommendedComponent}/>    
               <Route path="/notification" component={NotificationComponent}/>     
-              <Route path="/categories" component={CategoriesComponent}/>   
+              <Route path="/categories" component={CategoriesComponent}/> 
+              <Route path="/addblog" component={AddBlogComponent}/> 
+                
             <br/>
           <FooterComponent/>
       </Router>
