@@ -16,7 +16,6 @@ class SignupComponent extends React.Component {
         this.onchangedReenteredpassword=this.onchangedReenteredpassword.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
 
-
         
         this.state={
             username: '',

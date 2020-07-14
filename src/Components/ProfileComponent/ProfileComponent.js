@@ -13,11 +13,12 @@ import profile from '../Photos/pranit.jpg'
 class ProfileComponent extends React.Component {
     constructor(props) {
         super(props);
+        this.onClickChangeprofile = this.onClickChangeprofile.bind(this);
         //this.update=this.update.bind(this);
 
         this.state = {
             mydata: [],
-            myblogs:[]
+            myblogs: []
         }
 
 
@@ -29,14 +30,17 @@ class ProfileComponent extends React.Component {
                 mydata: res.data
             })
         })
-        axios.get('http://localhost:5200/selectallblogs').then((res)=>{
+        axios.get('http://localhost:5200/selectallblogs').then((res) => {
             console.log(res.data)
             this.setState({
-                myblogs : res.data
+                myblogs: res.data
             })
         })
     }
-
+    onClickChangeprofile(e) {
+        e.preventDefault();
+        this.props.history.push('/changeprofile')
+    }
 
     render() {
         if (!localStorage.getItem('token') && !localStorage.getItem('userid')) {
@@ -44,9 +48,9 @@ class ProfileComponent extends React.Component {
             this.props.history.push('/login');
 
         }
-        const { data } =this.state.myblogs
+        const { data } = this.state.myblogs
         return (
-            
+
             <body style={{ backgroundImage: "url(" + background + ")" }}>
 
 
@@ -58,7 +62,7 @@ class ProfileComponent extends React.Component {
                             <header class="jumbotron my-4" style={{ backgroundColor: "#CFCEDC" }, { padding: "20px" }} >
 
                                 <div style={{ textAlign: "center" }} ><img src={profile} width="280" height="300" /></div>
-                                <button class="btn btn-success" type="submit" value="edit">Edit</button>
+                                <button onClick={this.onClickChangeprofile} class="btn btn-success" type="submit" value="edit">Edit</button>
                             </header>
                         </div>
 
@@ -74,26 +78,38 @@ class ProfileComponent extends React.Component {
                         </div>
 
                     </div>
-                </div> 
+                </div>
                 <div class="container">
-                {
-                    this.state.myblogs.map((data) => {
-                        //console.log(data._id)
-                        return <b>
-                            <header class="jumbotron my-4">
+                    {
+                        this.state.myblogs.map((data) => {
+                            //console.log(data._id)
+                            return <b>
+                                <header class="jumbotron my-4">
 
 
-                                {/* <header class="jumbotron my-4"> */}
-                                <form >
-                                    <h3>{data.username}</h3>
-                                    <p><b>{data.category} ,{data.date}</b></p>
-                                    <p>{data.content}</p>
-                                </form>
-                            </header>
-                        </b>
+                                    {/* <header class="jumbotron my-4"> */}
+                                    <form >
+                                        <h3>{data.username}</h3>
+                                        <p><b>{data.category} ,{data.date}</b></p>
+                                        <p>{data.content}</p>
+                                    </form>
 
-                    })
-                }
+                                    <div class="row">
+
+                                        <div class="col-lg-4 mb-4" >
+                                            <button class="btn btn-success" type="submit" value="submit" >Upload</button>
+                                        </div>
+                                      
+                                        <div class="col-lg-4 mb-4" >
+                                            <button class="btn btn-danger" value="cancel">Cancel</button>
+                                        </div>
+
+                                    </div>
+                                </header>
+                            </b>
+
+                        })
+                    }
                 </div>
             </body>
         )
