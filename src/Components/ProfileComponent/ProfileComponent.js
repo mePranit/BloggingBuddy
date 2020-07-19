@@ -42,6 +42,26 @@ class ProfileComponent extends React.Component {
         e.preventDefault();
         this.props.history.push('/changeprofile')
     }
+    onDeleteBlog(blogid){
+       // confirm("Are you sure you want to delete this blog ? ");
+       //alert('check id'+blogid)
+       let value = window.prompt('Please note that you cannot recover the deleted blog. Please type Blog id to confirm your delete . Blogid : '+ blogid)
+       if(value==blogid){
+        alert("blog deleted sucessfully")
+        axios.delete('http://localhost:5200/deleteblog/'+blogid).then((res)=>{
+            alert("blog deleted sucessfully")
+            this.props.history.push('/profile')
+        })
+       }
+       else
+       {
+           alert('blogid didnot match')
+       }
+           //alert(showid)
+    }
+    onEditBlog(blogid){
+
+    }
 
     render() {
         if (!localStorage.getItem('token') && !localStorage.getItem('userid')) {
@@ -91,22 +111,25 @@ class ProfileComponent extends React.Component {
 
                                     {/* <header class="jumbotron my-4"> */}
                                     <form >
+                                        
                                         <h3>{data.username}</h3>
                                         <p><b>{data.category} ,{data.date}</b></p>
+                                        <p><b>Blog id : {data._id}</b></p>
                                         <p>{data.content}</p>
-                                    </form>
+                                    
 
                                     <div class="row">
 
                                         <div class="col-lg-2 mb-4" >
-                                            <button class="btn btn-success" type="submit" value="submit" >Edit</button>
+                                            <button onClick={() => this.onEditBlog(data._id)} class="btn btn-success" type="submit"  >Edit</button>
                                         </div>
                                       
                                         <div class="col-lg-2 mb-4" >
-                                            <button class="btn btn-danger" value="cancel">Delete</button>
+                                            <button onClick={() => this.onDeleteBlog(data._id)}  class="btn btn-danger" value="delete">Delete</button>
                                         </div>
 
                                     </div>
+                                    </form>
                                 </header>
                             </b>
 
