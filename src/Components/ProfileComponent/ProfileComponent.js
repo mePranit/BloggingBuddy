@@ -43,24 +43,27 @@ class ProfileComponent extends React.Component {
         this.props.history.push('/changeprofile')
     }
     onDeleteBlog(blogid){
+        //preventDefault()
        // confirm("Are you sure you want to delete this blog ? ");
        //alert('check id'+blogid)
        let value = window.prompt('Please note that you cannot recover the deleted blog. Please type Blog id to confirm your delete . Blogid : '+ blogid)
        if(value==blogid){
         alert("blog deleted sucessfully")
-        axios.delete('http://localhost:5200/deleteblog/'+blogid).then((res)=>{
+        axios.delete('http://localhost:5200/deleteblogs/'+blogid).then((res)=>{
             alert("blog deleted sucessfully")
             this.props.history.push('/profile')
         })
        }
        else
        {
+
            alert('blogid didnot match')
        }
            //alert(showid)
     }
     onEditBlog(blogid){
-
+        localStorage.setItem('editblogid', blogid);
+        this.props.history.push('/editblog')
     }
 
     render() {

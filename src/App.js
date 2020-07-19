@@ -24,6 +24,8 @@ import RecommendedComponent from './Components/RecommendedComponent/RecommendedC
 import NotificationComponent from './Components/NotificationComponent/NotificationComponent';
 import AddBlogComponent from './Components/AddBlogComponent/AddBlogComponent';
 import ChangeProfileComponent from './Components/ChangeProfileComponent/ChangeProfileComponent';
+import EditBlogComponent from './Components/EditBlogComponent/EditBlogComponent';
+
 
 
 import {BrowserRouter} from 'react-router-dom';
@@ -51,6 +53,8 @@ function App() {
               <Route path="/notification" component={NotificationComponent}/>     
               <Route path="/addblog" component={AddBlogComponent}/> 
               <Route path="/changeprofile" component={ChangeProfileComponent}/> 
+              <Route path="/editblog" component={EditBlogComponent}/> 
+              
                 
             <br/>
           <FooterComponent/>

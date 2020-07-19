@@ -69,7 +69,7 @@ class AddBlogComponent extends React.Component {
     {
         
         e.preventDefault();
-        alert('clicked')
+        //alert('clicked')
         const blogdata={
             category:this.state.category,
             content:this.state.content,
@@ -81,6 +81,7 @@ class AddBlogComponent extends React.Component {
             axios.post('http://localhost:5200/createblog',blogdata)
             .then(res => console.log(res.data));
             alert('blog created sucessfully')
+            this.props.history.push('/profile')
             //alert("show for "+this.state.performer+" sucessfully added");
             //this.props.history.push('/viewshow')
 
