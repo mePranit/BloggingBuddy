@@ -14,17 +14,21 @@ class ChangeProfileComponent extends React.Component {
         super(props);
         this.onchangedUsername = this.onchangedUsername.bind(this);
         this.onchangedGmail = this.onchangedGmail.bind(this);
+        this.onchangedBio = this.onchangedBio.bind(this);
         this.onchangedPassword = this.onchangedPassword.bind(this);
         this.onchangedReenteredpassword = this.onchangedReenteredpassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
+       // this.refreshPage = this.refreshPage.bind(this);
+        
 
 
         this.state = {
             username: '',
             gmail: '',
+            bio: '',
             password: '',
-            reenteredpassword: ''
+            reenteredpassword: '',
+            mydata: []
         }
     }
     onchangedUsername(e) {
@@ -36,6 +40,11 @@ class ChangeProfileComponent extends React.Component {
     onchangedGmail(e) {
         this.setState({
             gmail: e.target.value
+        });
+    }
+    onchangedBio(e) {
+        this.setState({
+            bio: e.target.value
         });
     }
 
@@ -50,30 +59,53 @@ class ChangeProfileComponent extends React.Component {
             reenteredpassword: e.target.value
         });
     }
+
     onSubmit(e) {
         //alert(this.state.gmail);
         e.preventDefault();
         if (this.state.password === this.state.reenteredpassword) {
             const user = {
-
+                bio: this.state.bio,
                 gmail: this.state.gmail,
                 username: this.state.username,
                 password: this.state.password
             }
             console.log(user);
-            axios.post('http://localhost:5200/registeruser', user)
+            axios.put('http://localhost:5200/updateuser/' + localStorage.getItem('userid'), user)
                 .then(res => console.log(res.data));
-            alert("user created sucessfully");
-            this.props.history.push('/login')
+            alert("user updated sucessfully");
+            //window.location.reload(false);
+            this.props.history.push('/profile')
         }
         else {
             alert("Password didnot matched");
 
         }
 
-
-
     }
+    //  refreshPage(e){ 
+    //     window.location.reload(); 
+    // }
+    componentDidMount() {
+        //this.refreshPage()
+        // window.location.reload();
+        axios.get('http://localhost:5200/getuser/' + localStorage.getItem('userid')).then((res) => {
+            console.log(res.data)
+            this.setState({
+                mydata: res.data
+            })
+            localStorage.setItem('profileusername', this.state.mydata.username);
+            localStorage.setItem('profilegmail', this.state.mydata.gmail);
+            localStorage.setItem('profilepassword', this.state.mydata.password);
+            localStorage.setItem('profilebio', this.state.mydata.bio);
+        })
+    }
+    // cleardata() {
+    //     localStorage.removeItem('profileusername')
+    //     localStorage.removeItem('profilegmail')
+    //     localStorage.removeItem('profilepassword')
+    //     localStorage.removeItem('profilebio')
+    // }
 
 
     render() {
@@ -83,7 +115,9 @@ class ChangeProfileComponent extends React.Component {
             this.props.history.push('/login');
 
         }
+       
         return (
+            
             <body style={{ backgroundImage: "url(" + background + ")" }}>
 
 
@@ -98,12 +132,12 @@ class ChangeProfileComponent extends React.Component {
                             <div class="row">
 
                                 <div class="col-lg-4 mb-4" >
-                                    
+
                                 </div>
                                 <div class="col-lg-4 mb-4" >
-                                <button onClick={this.onClickChangeprofile} class="btn btn-success" type="submit" value="edit">Upload</button>
-                            </div>
-                                
+                                    <button onClick={this.onClickChangeprofile} class="btn btn-success" type="submit" value="edit">Upload</button>
+                                </div>
+
                                 {/* <div class="col-lg-4 mb-4" >
     <button  class="btn btn-danger"  value="cancel">Cancel</button>
 </div> */}
@@ -133,20 +167,24 @@ class ChangeProfileComponent extends React.Component {
 
 
                             <form onSubmit={this.onSubmit}>
+                                <label for="bio"><b>Your Bio</b></label>
+                                <textarea type="text" name="bio" class="form-control" rows="5" cols="100" defaultValue={localStorage.getItem('profilebio')} onChange={this.onchangedBio}>
+
+                                </textarea>
                                 <label for="username"><b>Username</b></label>
-                                <input type="text" placeholder="Enter Username" name="username" value={this.state.username} onChange={this.onchangedUsername} required />
+                                <input type="text" placeholder="Enter Username" defaultValue={localStorage.getItem('profileusername')} onChange={this.onchangedUsername} required />
 
 
                                 <label for="gmail"><b>Gmail</b></label>
-                                <input type="text" placeholder="Enter Gmail" name="gmail" value={this.state.gmail} onChange={this.onchangedGmail} required />
+                                <input type="text" placeholder="Enter Gmail" defaultValue={localStorage.getItem('profilegmail')} onChange={this.onchangedGmail} required />
 
                                 <label for="password"><b>Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.onchangedPassword} required />
+                                <input type="password" placeholder="Enter Password" defaultValue={localStorage.getItem('profilepassword')} onChange={this.onchangedPassword} required />
 
                                 <label for="reenteredpassword"><b>Re-Enter Password</b></label>
-                                <input type="password" placeholder="Re-Enter Password" name="reenteredpassword" value={this.state.reenteredpassword} onChange={this.onchangedReenteredpassword} required />
+                                <input type="password" placeholder="Re-Enter Password" defaultValue={localStorage.getItem('profilepassword')} onChange={this.onchangedReenteredpassword} required />
 
-                                <button type="submit" value="signup">Save</button>
+                                <button type="submit" >Save</button>
                                 {/* <Link to="/login" className="nav-link">Already have an account?</Link> */}
                             </form>
                         </header>

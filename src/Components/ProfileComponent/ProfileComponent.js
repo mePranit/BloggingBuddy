@@ -24,13 +24,14 @@ class ProfileComponent extends React.Component {
 
     }
     componentDidMount() {
+        // window.location.reload();
         axios.get('http://localhost:5200/getuser/' + localStorage.getItem('userid')).then((res) => {
             console.log(res.data)
             this.setState({
                 mydata: res.data
             })
         })
-        axios.get('http://localhost:5200/selectallblogs').then((res) => {
+        axios.get('http://localhost:5200/selectmyblogs/'+ localStorage.getItem('userid')).then((res) => {
             console.log(res.data)
             this.setState({
                 myblogs: res.data
@@ -48,6 +49,7 @@ class ProfileComponent extends React.Component {
             this.props.history.push('/login');
 
         }
+       
         const { data } = this.state.myblogs
         return (
 
@@ -73,7 +75,7 @@ class ProfileComponent extends React.Component {
                             <h2><i>Gmail : {this.state.mydata.gmail}</i></h2>
                             <h2><i>Username :{this.state.mydata.username}</i></h2>
                             <h2><i>Bio -</i></h2>
-                            <p><i>Of resolve to gravity thought my prepare chamber so. Unsatiable entreaties collecting may sympathize nay interested instrument. If continue building numerous of at relation in margaret. Lasted engage roused mother an am at. Other early while if by do to. Missed living excuse as be. Cause heard fat above first shall for. My smiling to he removal weather on anxious. </i></p>
+                            <p><i>{this.state.mydata.bio}</i></p>
 
                         </div>
 
@@ -96,12 +98,12 @@ class ProfileComponent extends React.Component {
 
                                     <div class="row">
 
-                                        <div class="col-lg-4 mb-4" >
-                                            <button class="btn btn-success" type="submit" value="submit" >Upload</button>
+                                        <div class="col-lg-2 mb-4" >
+                                            <button class="btn btn-success" type="submit" value="submit" >Edit</button>
                                         </div>
                                       
-                                        <div class="col-lg-4 mb-4" >
-                                            <button class="btn btn-danger" value="cancel">Cancel</button>
+                                        <div class="col-lg-2 mb-4" >
+                                            <button class="btn btn-danger" value="cancel">Delete</button>
                                         </div>
 
                                     </div>
