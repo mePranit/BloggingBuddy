@@ -21,7 +21,8 @@ class LoginComponent extends React.Component {
         
         this.state={
             username: '',
-            password: ''
+            password: '',
+            mydata:[]
             
         }
     }
@@ -56,16 +57,19 @@ class LoginComponent extends React.Component {
                      }
                      else
                      {
-                        
+                        this.state.mydata=res.data
+                        //console.log(res.data)
+                        console.log(this.state.mydata)
                         localStorage.setItem('token', res.data.token);
                         localStorage.setItem('userid', res.data._id);
+                        localStorage.setItem('admin',res.data.admin)
                         //localStorage.getItem('itemName')
                         //localStorage.clear();
                         console.log(localStorage.getItem('token'));
                         console.log(localStorage.getItem('userid'));
+                        console.log(localStorage.getItem('admin'));
                         //console.log('userid above');
-
-                        this.props.history.push('/dashboard')
+                            this.props.history.push('/dashboard')                       
                      }
                      
                     //this.setState({

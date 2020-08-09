@@ -136,6 +136,7 @@ class RecommendedComponent extends React.Component {
             this.props.history.push('/login');
            
         }
+       
         const { data } =this.state.allblogs
         return(
                  <div class="container">

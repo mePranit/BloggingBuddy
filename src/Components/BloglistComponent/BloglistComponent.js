@@ -19,7 +19,7 @@ import {
 // import FabButton from ' @material/fab'
 // import FabButton from ' @material/fab'
 
-class DashboardComponent extends React.Component {
+class BloglistComponent extends React.Component {
     constructor (props){
         super(props);
       //  this.onCancelBook=this.onCancelBook.bind(this)
@@ -144,15 +144,31 @@ class DashboardComponent extends React.Component {
             })
         })
     }
+    onDeleteBlog(blogid){
+        //preventDefault()
+       // confirm("Are you sure you want to delete this blog ? ");
+       //alert('check id'+blogid)
+       let value = window.prompt('Please note that you cannot recover the deleted blog. Please type Blog id to confirm your delete . Blogid : '+ blogid)
+       if(value==blogid){
+        alert("blog deleted sucessfully")
+        axios.delete('http://localhost:5200/deleteblogs/'+blogid).then((res)=>{
+            alert("blog deleted sucessfully")
+            this.props.history.push('/bloglist')
+        })
+       }
+       else
+       {
+
+           alert('blogid didnot match')
+       }
+           //alert(showid)
+    }
     render(){
         
         if(!localStorage.getItem('token') && !localStorage.getItem('userid')){
             alert("you are not logged in");
             this.props.history.push('/login');
            
-        }
-       if(localStorage.getItem('admin')=='y'){
-            this.props.history.push('/admindashboard')
         }
         const { data } =this.state.allblogs
         return(
@@ -169,6 +185,15 @@ class DashboardComponent extends React.Component {
                                                                 <h3>{data.username}</h3>
                                                                 <p><b>{data.category} ,{data.date}</b></p>
                                                                 <p>{data.content}</p>
+                                                                <p>Blog id : {data._id}</p>
+
+                                                                <div class="row">
+                                                            
+                                                                <div class="col-lg-2 mb-4" >
+                                                                    <button onClick={() => this.onDeleteBlog(data._id)}  class="btn btn-danger" value="delete">Delete</button>
+                                                                </div>
+
+                                                                </div>
                                                             </form>
                                             </header>
                                              </b>
@@ -180,7 +205,7 @@ class DashboardComponent extends React.Component {
         )
     }
 }
-export default DashboardComponent
+export default BloglistComponent
 
 
 

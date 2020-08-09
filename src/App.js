@@ -25,6 +25,11 @@ import NotificationComponent from './Components/NotificationComponent/Notificati
 import AddBlogComponent from './Components/AddBlogComponent/AddBlogComponent';
 import ChangeProfileComponent from './Components/ChangeProfileComponent/ChangeProfileComponent';
 import EditBlogComponent from './Components/EditBlogComponent/EditBlogComponent';
+import AdminDashboardComponent from './Components/AdminDashboardComponent/AdminDashboardComponent';
+import UserlistComponent from './Components/UserlistComponent/UserlistComponent';
+import BloglistComponent from './Components/BloglistComponent/BloglistComponent';
+
+
 
 
 
@@ -40,22 +45,26 @@ function App() {
   return (
     <BrowserRouter>
     
-      <Router>
-          <HeaderComponent/>
-            <br/>         
+      <Router>  
+      {/* <Route path="/dashboard"exact component={HeaderComponent}/> 
+      <Route path="/admindashboard"exact component={AdminHeaderComponent}/>  */}
+      <HeaderComponent/>
+     
+            <br/>                
               <Route path="/"exact component={LoginComponent}/>
               <Route path="/login" component={LoginComponent}/>
               <Route path="/signup" component={SignupComponent}/>
               <Route path="/profile" component={ProfileComponent}/> 
               <Route path="/about" component={AboutComponent}/>    
               <Route path="/dashboard" component={DashboardComponent}/> 
+              <Route path="/admindashboard" component={AdminDashboardComponent}/> 
               <Route path="/recommended" component={RecommendedComponent}/>    
               <Route path="/notification" component={NotificationComponent}/>     
               <Route path="/addblog" component={AddBlogComponent}/> 
               <Route path="/changeprofile" component={ChangeProfileComponent}/> 
-              <Route path="/editblog" component={EditBlogComponent}/> 
-              
-                
+              <Route path="/editblog" component={EditBlogComponent}/>      
+              <Route path="/userlist" component={UserlistComponent}/>      
+              <Route path="/bloglist" component={BloglistComponent}/>                 
             <br/>
           <FooterComponent/>
       </Router>

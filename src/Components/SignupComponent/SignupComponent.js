@@ -21,7 +21,8 @@ class SignupComponent extends React.Component {
             username: '',
             gmail: '',
             password: '',
-            reenteredpassword: ''
+            reenteredpassword: '',
+            admin:''
         }
     }
     onchangedUsername(e)
@@ -61,7 +62,8 @@ class SignupComponent extends React.Component {
             
                 gmail:this.state.gmail,
                 username:this.state.username,
-                password:this.state.password           
+                password:this.state.password  ,
+                admin:'n'         
             }
                 console.log(user);
                 axios.post('http://localhost:5200/registeruser',user)
