@@ -10,9 +10,11 @@
     "Router": "^2.1.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "email-verification": "^0.4.6",
     "fonts": "0.0.2",
     "jquery": "^3.5.1",
     "link": "^0.1.5",
+    "nodemailer": "^6.4.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-floating-action-button": "^1.0.5",
@@ -43,5 +45,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mePranit/BloggingBuddy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mePranit/BloggingBuddy/issues"
+  },
+  "homepage": "http://localhost:3000/"
 }

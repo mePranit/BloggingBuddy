@@ -61,7 +61,7 @@ export default class HeaderComponent extends React.Component {
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-              <input type="text" placeholder="Search People" style={{ marginLeft: "40px", marginRight: "40px" }} />
+              {/* <input type="text" placeholder="Search People" style={{ marginLeft: "40px", marginRight: "40px" }} /> */}
               {/* <button>Search</button> */}
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
@@ -79,9 +79,10 @@ export default class HeaderComponent extends React.Component {
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                       <Link onClick={this.onuser}  to="/recommended" className="dropdown-item">Recommended</Link>
                       <Link onClick={this.onuser}  to="/about"  className="dropdown-item">About</Link>
-                      <Link onClick={this.onuser}  to="/notification" className="dropdown-item">Notification</Link>
+                      {/* <Link onClick={this.onuser}  to="/notification" className="dropdown-item">Notification</Link> */}
                       <Link onClick={this.onuser}  to="/profile" className="dropdown-item">Your Profile</Link>
                       <Link onClick={this.onuser}  to="/addblog" className="dropdown-item">Create Blog</Link>
+                      <Link onClick={this.onuser}  to="/find" className="dropdown-item">Find People</Link>
                       <Link onClick={this.userlogout} className="dropdown-item">Logout</Link>
 
                     </div>

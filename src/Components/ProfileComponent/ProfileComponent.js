@@ -8,8 +8,6 @@ import profile from '../Photos/pranit.jpg'
 
 
 
-
-
 class ProfileComponent extends React.Component {
     constructor(props) {
         super(props);

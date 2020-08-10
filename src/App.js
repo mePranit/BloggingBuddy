@@ -21,13 +21,14 @@ import ProfileComponent from './Components/ProfileComponent/ProfileComponent';
 import AboutComponent from './Components/AboutComponent/AboutComponent';
 import DashboardComponent from './Components/DashboardComponent/DashboardComponent';
 import RecommendedComponent from './Components/RecommendedComponent/RecommendedComponent';
-import NotificationComponent from './Components/NotificationComponent/NotificationComponent';
+import FindComponent from './Components/FindComponent/FindComponent';
 import AddBlogComponent from './Components/AddBlogComponent/AddBlogComponent';
 import ChangeProfileComponent from './Components/ChangeProfileComponent/ChangeProfileComponent';
 import EditBlogComponent from './Components/EditBlogComponent/EditBlogComponent';
 import AdminDashboardComponent from './Components/AdminDashboardComponent/AdminDashboardComponent';
 import UserlistComponent from './Components/UserlistComponent/UserlistComponent';
 import BloglistComponent from './Components/BloglistComponent/BloglistComponent';
+import VerifyComponent from './Components/VerifyComponent/Verify';
 
 
 
@@ -59,12 +60,13 @@ function App() {
               <Route path="/dashboard" component={DashboardComponent}/> 
               <Route path="/admindashboard" component={AdminDashboardComponent}/> 
               <Route path="/recommended" component={RecommendedComponent}/>    
-              <Route path="/notification" component={NotificationComponent}/>     
+              <Route path="/find" component={FindComponent}/>     
               <Route path="/addblog" component={AddBlogComponent}/> 
               <Route path="/changeprofile" component={ChangeProfileComponent}/> 
               <Route path="/editblog" component={EditBlogComponent}/>      
               <Route path="/userlist" component={UserlistComponent}/>      
-              <Route path="/bloglist" component={BloglistComponent}/>                 
+              <Route path="/bloglist" component={BloglistComponent}/>    
+              <Route path="/verify" component={VerifyComponent}/>                 
             <br/>
           <FooterComponent/>
       </Router>

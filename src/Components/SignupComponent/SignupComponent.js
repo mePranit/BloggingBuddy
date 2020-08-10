@@ -7,7 +7,10 @@ import background from '../Photos/background.png'
 
 
 
+
+
 class SignupComponent extends React.Component {
+    
     constructor (props){
         super(props);
         this.onchangedUsername=this.onchangedUsername.bind(this);
@@ -52,24 +55,71 @@ class SignupComponent extends React.Component {
             reenteredpassword:e.target.value
         });
     }
+
+    // onSendMail(gmail){
+
+    //     let transporter=nodemailer.createTransport({
+    //         service :'gmail',
+    //         auth :{
+    //             user:'Bloggingbuddy10@gmail.com',
+    //             pass:'BloggingBuddy10'
+    //         }
+    //     });
+
+    //     let mailOption={
+    //         from :'Bloggingbuddy10@gmail.com',
+    //         to :"'"+gmail+"'",
+    //         subject : ' BloggingBuddy Account verification',
+    //         text : 'please click the link below to verify your account'
+    //     };
+
+    //     transporter.sendMail(mailOption,function(err,data){
+    //         if(err){
+    //             alert('error occoured')
+    //         }
+    //         else
+    //         {
+    //             alert('process completed')
+    //         }
+    //     });
+    // }
     onSubmit(e)
     {
         //alert(this.state.gmail);
         e.preventDefault();
         if(this.state.password===this.state.reenteredpassword)
         {
+            var rand = Math.floor(Math.random() * 100) + 1;
+            console.log(rand)
             const user={
             
                 gmail:this.state.gmail,
                 username:this.state.username,
                 password:this.state.password  ,
-                admin:'n'         
+                admin:'n' ,
+                code:rand,
+                verified:'n'        
             }
+                //this.onSendMail(this.state.gmail);
                 console.log(user);
                 axios.post('http://localhost:5200/registeruser',user)
-                .then(res => console.log(res.data));
-                alert("user created sucessfully");
-                this.props.history.push('/login')
+                .then((res) =>{ console.log(res.data)
+                if(res.data==="sucess"){
+
+                localStorage.setItem('signupgmail', this.state.gmail);
+                localStorage.setItem('signupusername', this.state.username);
+                localStorage.setItem('signuppassword', this.state.password);
+                localStorage.setItem('signupadmin', 'n');
+                localStorage.setItem('signupcode', rand);
+                //alert("your account was created sucessfully.")
+                this.props.history.push('/verify')
+                }
+                if(res.data==="unsucess"){
+                    alert('invalid email address')
+                }
+            })
+                    
+                
         }
         else
         {
