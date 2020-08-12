@@ -82,7 +82,7 @@ export default class HeaderComponent extends React.Component {
                       {/* <Link onClick={this.onuser}  to="/notification" className="dropdown-item">Notification</Link> */}
                       <Link onClick={this.onuser}  to="/profile" className="dropdown-item">Your Profile</Link>
                       <Link onClick={this.onuser}  to="/addblog" className="dropdown-item">Create Blog</Link>
-                      <Link onClick={this.onuser}  to="/find" className="dropdown-item">Find People</Link>
+                      <Link onClick={this.onuser}  to="/feedback" className="dropdown-item">Feedback</Link>
                       <Link onClick={this.userlogout} className="dropdown-item">Logout</Link>
 
                     </div>
@@ -97,6 +97,7 @@ export default class HeaderComponent extends React.Component {
                        <Link onClick={this.onadmin}  to="/profile" className="dropdown-item">Your Profile</Link>
                        <Link onClick={this.onadmin}  to="/userlist" className="dropdown-item">View User list</Link>
                        <Link onClick={this.onadmin}  to="/bloglist" className="dropdown-item">View Blog list</Link>
+                       <Link onClick={this.onadmin}  to="/feedbacklist" className="dropdown-item">View Feedback</Link>
                        <Link onClick={this.adminlogout} className="dropdown-item">Logout</Link>
 
                     </div>

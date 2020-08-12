@@ -21,7 +21,7 @@ import ProfileComponent from './Components/ProfileComponent/ProfileComponent';
 import AboutComponent from './Components/AboutComponent/AboutComponent';
 import DashboardComponent from './Components/DashboardComponent/DashboardComponent';
 import RecommendedComponent from './Components/RecommendedComponent/RecommendedComponent';
-import FindComponent from './Components/FindComponent/FindComponent';
+import FeedbackComponent from './Components/FeedbackComponent/FeedbackComponent';
 import AddBlogComponent from './Components/AddBlogComponent/AddBlogComponent';
 import ChangeProfileComponent from './Components/ChangeProfileComponent/ChangeProfileComponent';
 import EditBlogComponent from './Components/EditBlogComponent/EditBlogComponent';
@@ -29,6 +29,7 @@ import AdminDashboardComponent from './Components/AdminDashboardComponent/AdminD
 import UserlistComponent from './Components/UserlistComponent/UserlistComponent';
 import BloglistComponent from './Components/BloglistComponent/BloglistComponent';
 import VerifyComponent from './Components/VerifyComponent/Verify';
+import viewFeedbackComponent from './Components/ViewFeedbackComponent/ViewFeedbackComponent';
 
 
 
@@ -40,6 +41,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 
 
 function App() {
@@ -60,13 +62,15 @@ function App() {
               <Route path="/dashboard" component={DashboardComponent}/> 
               <Route path="/admindashboard" component={AdminDashboardComponent}/> 
               <Route path="/recommended" component={RecommendedComponent}/>    
-              <Route path="/find" component={FindComponent}/>     
+              <Route path="/feedback" component={FeedbackComponent}/>     
               <Route path="/addblog" component={AddBlogComponent}/> 
               <Route path="/changeprofile" component={ChangeProfileComponent}/> 
               <Route path="/editblog" component={EditBlogComponent}/>      
               <Route path="/userlist" component={UserlistComponent}/>      
-              <Route path="/bloglist" component={BloglistComponent}/>    
-              <Route path="/verify" component={VerifyComponent}/>                 
+              <Route path="/bloglist" component={BloglistComponent}/>  
+              <Route path="/feedbacklist" component={viewFeedbackComponent}/>    
+              <Route path="/verify" component={VerifyComponent}/>    
+                           
             <br/>
           <FooterComponent/>
       </Router>
